@@ -1,0 +1,14 @@
+{
+    "name": "node-i2r",
+    "version": "1.0.0",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "dependencies": {
+      "express": "4.17.1",
+      "mqtt": "5.3.4",
+      "ws": "8.4.0"
+    }
+  }
+  
