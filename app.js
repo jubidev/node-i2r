@@ -53,7 +53,7 @@ app.post('/update', (req, res) => {
   if (!isNaN(newStockValue)) {
     stockValue = newStockValue;
 
-    fs.writeFile(stockFile, stockValue.toString())
+    fs.writeFile(stockFile, stockValue.toFixed(3).toString())
       .catch((error) => {
         console.error('Error writing to stock file:', error);
       });
@@ -108,10 +108,12 @@ mqttClient.on('message', (topic, message) => {
   if (topic === impulseTopic) {
     stockValue += parseFloat(message.toString()) || 0.0;
 
-    fs.writeFile(stockFile, stockValue.toString())
+    fs.writeFile(stockFile, stockValue.toFixed(3).toString())
       .catch((error) => {
         console.error('Error writing to stock file:', error);
       });
+    
+    publishStockValue();
   }
 });
 
